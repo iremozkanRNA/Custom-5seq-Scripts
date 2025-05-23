@@ -1,12 +1,7 @@
 rm(list=ls())
-library(dplyr)
-library(UpSetR)
+lapply(c("dplyr", "UpSetR"), library, character.only = T)
 
-fh1 <- read.csv("~/Desktop/Stuff/AMeyer_Lab/Experiment_results/5seq/TSSPredIremOutput/KsgData_fRanked.csv") 
-library(dplyr)
-library(UpSetR)
-
-# Assume fh1 is already loaded and has 'Genome' and 'SuperPos' columns
+fh1 <- read.csv("~/Desktop/Stuff/AMeyer_Lab/Experiment_results/5seq/TSSPredIremOutput/ChlData_fRanked.csv") %>% filter(rank == "primary")
 
 # Get unique Genome types
 genomes <- unique(fh1$Genome)
@@ -19,7 +14,7 @@ colnames(binary_matrix) <- genomes
 rownames(binary_matrix) <- all_superpos
 
 # Assign colors (customize as needed)
-set_colors <- c("gray", "pink", "maroon4")[seq_along(genomes)]
+set_colors <- c("gray", "lightgreen", "darkgreen")[seq_along(genomes)]
 binary_matrix[] <- lapply(binary_matrix, as.integer)
 
 # Plot

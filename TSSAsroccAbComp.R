@@ -7,10 +7,10 @@ fh1 <- read.csv("~/Desktop/Stuff/AMeyer_Lab/Experiment_results/5seq/TSSPredIremO
 fh2 <- read.csv("~/Desktop/Stuff/AMeyer_Lab/Experiment_results/5seq/TSSPredIremOutput/KsgData_fRanked.csv")
 
 # Filter for each genome and extract unique SuperPos
-ndc1 <- fh1 %>% filter(rank == "primary", Genome == "NDCt60")
-ndc2 <- fh2 %>% filter(rank == "primary", Genome == "NDCt60")
-chl1 <- fh1 %>% filter(rank == "primary", Genome == "Chl3q_t60")
-ksg1 <- fh2 %>% filter(rank == "primary", Genome == "Ksg3q_t60")
+ndc1 <- fh1 %>% filter(rank == "primary", Genome == "NDCt60", TSSUTR != "")
+ndc2 <- fh2 %>% filter(rank == "primary", Genome == "NDCt60", TSSUTR != "")
+chl1 <- fh1 %>% filter(rank == "primary", Genome == "Chl3q_t60", TSSUTR != "")
+ksg1 <- fh2 %>% filter(rank == "primary", Genome == "Ksg3q_t60", TSSUTR != "")
 
 superpos_ndc1 <- unique(ndc1$SuperPos)
 superpos_ndc2 <- unique(ndc2$SuperPos)
@@ -33,7 +33,7 @@ ndc_matrix <- data.frame(
 rownames(ndc_matrix) <- ndc_matrix$SuperPos
 ndc_matrix$SuperPos <- NULL
 # Set colors for the sets in the same order as in the upset() call
-set_colors <- c("gray", "maroon4","darkgreen")
+set_colors <- c("gray", "#7F0440","#108080")
 # Draw the UpSet plot
 upset(ndc_matrix,
       sets = c("NDCall", "Chl3q_t60", "Ksg3q_t60"),

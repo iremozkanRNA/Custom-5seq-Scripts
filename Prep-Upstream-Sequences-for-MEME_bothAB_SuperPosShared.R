@@ -14,8 +14,8 @@ Data2 <- read.csv("KsgData_fRanked.csv", header = TRUE)
 #######################################################
 
 # Filter for primary, genic TSSs
-primary <- Data %>% filter(rank == "primary", TSSUTR != "" & Locus == "", Genome == "NDCt60")
-primary2 <- Data2 %>% filter(rank == "primary", TSSUTR != "" & Locus == "", Genome == "NDCt60")
+primary <- Data %>% filter(rank == "primary", TSSUTR == "" & Locus != "", Genome == "NDCt60")
+primary2 <- Data2 %>% filter(rank == "primary", TSSUTR == "" & Locus != "", Genome == "NDCt60")
 
 # Standardize Genome names
 primary$Genome[primary$Genome == "NDCt60"] <- "ChlNDCt60"

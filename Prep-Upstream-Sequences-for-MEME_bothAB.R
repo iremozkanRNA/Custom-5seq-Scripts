@@ -11,9 +11,9 @@ Data2 <- read.csv("KsgData_fRanked.csv", header = T)
 
 #######################################################
 
-primary <- Data %>% filter(rank == "primary",  TSSUTR == "" & Locus != "" )
+primary <- Data %>% filter(rank == "primary",  TSSUTR == "" & Locus != "" , Genome =="NDCt60")
 primary$Genome[primary$Genome == "NDCt60"] <- "ChlNDCt60"
-primary2 <- Data2 %>% filter(rank == "primary",  TSSUTR == "" & Locus != "" )
+primary2 <- Data2 %>% filter(rank == "primary",  TSSUTR == "" & Locus != "" ,Genome =="NDCt60" )
 primary2$Genome[primary2$Genome == "NDCt60"] <- "KsgNDC60"
 primary <- rbind(primary, primary2)
 primary <- primary[!duplicated(primary$SuperPos),]
@@ -41,4 +41,4 @@ rownames(fastaformat) <- 1:nrow(fastaformat)
 fastaformatPOS <- fastaformat
 fastaformatPOS <- fastaformat[-c(nrow(fastaformatPOS)),]
 
-write.csv(fastaformatPOS, file = "MEME_ChlKsg_primary_Genic.csv", sep = "", row.names = F, col.names = F)
+write.csv(fastaformatPOS, file = "~/Desktop/Manuscript/Tables/Table_S4_MEME_ChlKsg_primaryTSS_Locus_NDC.csv", sep = "", row.names = F, col.names = F)

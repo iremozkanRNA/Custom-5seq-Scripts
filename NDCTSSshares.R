@@ -1,8 +1,8 @@
 rm(list=ls())
 lapply(c("dplyr", "UpSetR"), library, character.only=T)
 
-fh1 <- read.csv("~/Desktop/Stuff/AMeyer_Lab/Experiment_results/5seq/TSSPredIremOutput/ChlData_fRanked.csv") %>% filter(rank == "primary",Genome == "NDCt60", TSSUTR != "")
-fh2 <- read.csv("~/Desktop/Stuff/AMeyer_Lab/Experiment_results/5seq/TSSPredIremOutput/KsgData_fRanked.csv") %>% filter(rank == "primary", Genome == "NDCt60", TSSUTR != "")
+fh1 <- read.csv("~/Desktop/Stuff/AMeyer_Lab/Experiment_results/5seq/TSSPredIremOutput/ChlData_fRanked.csv") %>% filter(rank == "primary",Genome == "NDCt60", Locus != "", TSSUTR =="")
+fh2 <- read.csv("~/Desktop/Stuff/AMeyer_Lab/Experiment_results/5seq/TSSPredIremOutput/KsgData_fRanked.csv") %>% filter(rank == "primary", Genome == "NDCt60", Locus != "", TSSUTR =="")
 
 tss1 <- unique(fh1$SuperPos)
 tss2 <- unique((fh2$SuperPos))
